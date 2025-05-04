@@ -17,7 +17,7 @@ public class Testtest {
     ApiClient apiClient = new ApiClient();
 
     @Test
-    public void testoftest() throws IOException, ApiException {
+    public void testoftest() throws ApiException {
         OkHttpClient client = new OkHttpClient();
 
         User user = new User();
