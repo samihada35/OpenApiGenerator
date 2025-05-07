@@ -19,6 +19,8 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/User'
+        '405':
+          description: Incorrect input
 
     post:
       summary: Create a new user
@@ -36,7 +38,9 @@ paths:
               schema:
                 $ref: '#/components/schemas/User'
         '400':
-          description: Invalid input
+          description: Missing required fields
+        '500':
+          description: Internal server error
 
   /users/{id}:
     get:
@@ -66,8 +70,16 @@ paths:
           schema:
             type: integer
       responses:
-        '204':
+        '200':
           description: User deleted
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: User with id 1 deleted
         '404':
           description: User not found
 
@@ -107,10 +119,10 @@ components:
           example: 1
         name:
           type: string
-          example: Alice
+          example: Pedro
         email:
           type: string
-          example: alice@example.com
+          example: test@test.test
 
     UserCreateRequest:
       type: object
